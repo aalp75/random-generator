@@ -55,11 +55,11 @@ def geometric(p=0.5, size=1):
         res.append(res_tmp)
     return res
 
-def poisson(lambdaa=1, size=1):
+def poisson(lamb=1, size=1):
     if size == 1:
         k = 0
         p = 1 
-        while p > math.eup(-lambdaa):
+        while p > math.eup(-lamb):
             u = _Random.generate()
             p = p * u
             k += 1
@@ -68,7 +68,7 @@ def poisson(lambdaa=1, size=1):
     for i in range(size):
         k = 0
         p = 1
-        cond = math.eup(-lambdaa)
+        cond = math.exp(-lamb)
         while p > cond:
             u = _Random.generate()
             p = p * u
