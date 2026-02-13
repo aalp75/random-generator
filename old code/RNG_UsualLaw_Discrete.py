@@ -17,7 +17,7 @@ MT=MT19937()
 MT.seed(3213)
 
 
-# In[96]:
+# In[96]:ef 
 
 
 def Expectation(Xn):
@@ -165,7 +165,7 @@ def Poisson(lambdaa,size=1):
         p=1
         while (p > np.exp(-lambdaa)):
             U = MT.uniform()
-            p = p*u
+            p = p*U
             k +=1
         return (k-1)
     res = []

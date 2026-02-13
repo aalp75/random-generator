@@ -1,0 +1,13 @@
+# Virtual environments
+.venv/
+
+# Extension
+.VSCodeCounter/
+
+# Python cache
+__pycache__/
+
+# Pybind11 related
+src/rng.egg-info/
+build/
+*.so

@@ -2,7 +2,7 @@
 
 ## Uniform Law 
 
-LCG and MT-19937
+## LCG and MT-19937
 
 ## Usual Discrete Law
 
@@ -12,4 +12,4 @@ LCG and MT-19937
 
 ## Statistical test
 
-Chi-deux and Kolmogorov test
+## Chi-deux and Kolmogorov test
