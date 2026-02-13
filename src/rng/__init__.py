@@ -12,20 +12,20 @@ __all__ = [
     # package
     'set_generator',
 
-    #utils
+    # utils
     'expectation',
     'variance',
     'std',
     'autocorrelation',
 
-    # discrete laws
+    # continuous distributions
     'bernouilli',
     'uniform_discrete',
     'binomial',
     'geometric',
     'poisson',
     
-    # continue laws
+    # continuous distributions
     'uniform',
     'exponential',
     'gaussian',
@@ -34,7 +34,7 @@ __all__ = [
     'pareto,'
     'chisquare',
 
-    # statistic tests
+    # statistical tests
     'chi2_test',
     'indep_test',
     'ks_test',
