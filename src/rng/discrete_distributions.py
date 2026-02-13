@@ -55,11 +55,14 @@ def geometric(p=0.5, size=1):
         res.append(res_tmp)
     return res
 
+# Simulation method using the below theorem:
+# (Xn) is an i.i.d. sequence of exponential law of parameters lamb
+# then for Sn = sum(Xn), P(Sn <= 1 <= Sn+1) = exponential density
 def poisson(lamb=1, size=1):
     if size == 1:
         k = 0
         p = 1 
-        while p > math.eup(-lamb):
+        while p > math.exp(-lamb):
             u = _Random.generate()
             p = p * u
             k += 1

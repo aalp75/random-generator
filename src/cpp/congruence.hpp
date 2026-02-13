@@ -1,5 +1,22 @@
 #include <cstdint>
 
+/** 
+ * Linear congruence random generator
+ * 
+ * Generated a sequence of the form:
+ *  Xn = (a * Xn + c) % m
+ * 
+ * a, c and m are critical in the process and needs to be well chosen
+ * 
+ * Well-known suitable values for congruence generator:
+ * 
+ * RANDU
+ *  a = 65539, b = 0, m = 2 ^ 31 - 1
+ * 
+ * Standard Minimal
+ *  a = 16807, b = 0, m = 2 ^ 31 - 1
+ */
+
 class CongruenceGenerator {
 
 public:

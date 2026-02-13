@@ -1,16 +1,16 @@
 from .rng_state import _Random
-from .discrete_laws import *
-from .continue_laws import *
+from .discrete_distributions import *
+from .continuous_distributions import *
 from .utils import *
-from .metropolis_hastings import *
-from .tests_statistic import *
+from .mcmc import *
+from .statistical_test import *
 
 def set_generator(method, seed=None):
     _Random.set_generator(method, seed)
 
 __all__ = [
     # package
-    "set_generator",
+    'set_generator',
 
     #utils
     'expectation',
@@ -32,7 +32,7 @@ __all__ = [
     'gaussian_vector',
     'gamma',
     'pareto,'
-    'khi_deux',
+    'chisquare',
 
     # statistic tests
     'chi2_test',
@@ -40,5 +40,5 @@ __all__ = [
     'ks_test',
 
     # MCMC
-    'metropolis_hastings',
+    'mcmc',
 ]

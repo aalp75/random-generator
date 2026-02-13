@@ -1,11 +1,5 @@
 import rngcpp
 
-# add others uniform generator
-# rng_VonNeumann
-# generator_congruence
-# RANDU
-# Unif_StandardMininmal
-
 class _Random:
     __generator = rngcpp.MT19937()
     __method = 'mt19937'

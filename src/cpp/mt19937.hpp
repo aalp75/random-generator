@@ -5,6 +5,14 @@
 #include <vector>
 #include <cstddef>
 
+/** 
+ * Mersenne Twister, Makoto Matsumoto (1997)
+ * 
+ * Algorithm is based on Wikipedia
+ * https://en.wikipedia.org/wiki/Mersenne_Twister
+ *
+*/
+
 class MT19937 {
 
 public:

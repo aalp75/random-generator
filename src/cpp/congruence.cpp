@@ -4,16 +4,6 @@
 
 #include "congruence.hpp"
 
-/**
- * Well-known suitable values for congruence generator:
- * 
- * RANDU
- *  a = 65539, b = 0, m = 2 ^ 31 - 1
- * 
- * Standard Minimal
- *  a = 16807, b = 0, m = 2 ^ 31 - 1
- */
-
 CongruenceGenerator::CongruenceGenerator()
     : a(65539)
     , c(0)

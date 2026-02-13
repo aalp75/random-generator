@@ -51,13 +51,52 @@ def gaussian_vector(mu, sigma, n):
     mu should be a vector and sigma a matrix (n x n)
     '''
     sigma_sqrt = np.linalg.cholesky(sigma)
-    g = np.asarray(gaussian(0.0, 1.0, n))
-    return mu + np.dot(sigma_sqrt, g)
+    z = np.asarray(gaussian(0.0, 1.0, n))
+    return mu + sigma_sqrt @ z
 
 
-# Following the paper of Debasis Kundu and Rameshwar D. Gupta,
-# "A Convenient Way of Generating Gamma _Random Variables Using 
-# Generalized Exponential Distribution."
+"""
+This implementation follows the paper by Debasis Kundu and
+Rameshwar D. Gupta: "A Convenient Way of Generating Gamma Random 
+Variables Using the Generalized Exponential Distribution"
+
+The method relies on classical properties of the Gamma distribution.
+
+1) Scaling property
+If X ~ Gamma(k, 1), then theta * X ~ Gamma(k, theta).
+
+2) Sum of exponentials
+The sum of n independent Exponential(1) variables follows
+Gamma(n, 1).
+
+3) Shape-addition property
+For any real k > 0, write:
+    k = n + delta
+where n = floor(k) and delta in [0, 1).
+
+Then:
+    Gamma(k, 1) = Gamma(n, 1) + Gamma(delta, 1)
+
+Using these properties, a Gamma(k, theta) random variable can be
+generated as:
+
+    theta * ( xi - sum_{i=1}^{floor(k)} ln(U_i) )
+
+where:
+    - U_i are independent Uniform(0, 1) variables,
+    - xi ~ Gamma(delta, 1),
+    - delta = k - floor(k).
+
+The main difficulty is simulating xi when delta is in (0, 1).
+For this fractional shape case, we use the Ahrens-Dieter
+acceptance-rejection method with the following majorizing function:
+
+For x in (0, 1):
+    g_k(x) = x^(k - 1) / Gamma(k)
+
+For x >= 1:
+    g_k(x) = exp(-x) / Gamma(k)
+"""
 
 def gamma(k, theta, size=1, max_iter=1000):
     e = math.exp(1)
@@ -94,7 +133,7 @@ def gamma(k, theta, size=1, max_iter=1000):
 
                 it += 1
                 if (it == max_iter):
-                    "Algo didn't converge"
+                    raise RuntimeError("Gamma simulation algorithm did not converge")
                     return 0
 
         s = 0.0
@@ -128,7 +167,7 @@ def gamma(k, theta, size=1, max_iter=1000):
 
                 it += 1
                 if (it == max_iter):
-                    raise "Algo didn't converge"
+                    raise RuntimeError("Gamma simulation algorithm did not converge")
 
         s = 0.0
         for _ in range(n):
@@ -149,7 +188,7 @@ def pareto(xm, alpha, size=1):
         res.append(xm / pow(u, 1 / alpha))
     return res
 
-def khi_deux(k, size=1):
+def chisquare(k, size=1):
     if size == 1:
         return sum(np.asarray(gaussian(0.0, 1.0, k)) ** 2)
     res = []
