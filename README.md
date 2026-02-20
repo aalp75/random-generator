@@ -28,7 +28,7 @@ import math
 
 rng.set_generator('mt19937', 57)
 
-sample = rng.gaussian(0, 1, size=10_000)
+sample = rng.gaussian(0, 1, size=100) # generate a sample of 100 gaussian N(0, 1)
 
 def gaussian_density(x):
     mu, sigma = 5, 1 # mean and standard deviation
@@ -36,7 +36,7 @@ def gaussian_density(x):
     normalization = math.sqrt(2 * math.pi * sigma ** 2)
     return  num / normalization
 
-sample, ratio = rng.mcmc(gaussian_density)
+sample, ratio = rng.mcmc(gaussian_density, size=100) # generate the same sample using MCMC
 print(f"Acceptance ratio: {ratio * 100:.2f}%")
 ```
 
