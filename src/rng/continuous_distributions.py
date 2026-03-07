@@ -110,29 +110,29 @@ def gamma(k, theta, size=1, max_iter=1000):
             return 1e-15
         return u
 
-    if (size == 1):
+    if size == 1:
         gamma1 = 0.0  # corresponds to Gamma(delta, 1)
 
-        if (delta > 0.0):
+        if delta > 0.0:
             it = 0
-            while (it <= max_iter):
+            while it <= max_iter:
                 u1 = _Random.generate()
                 u2 = _Random.generate()
                 u3 = _Random.generate()
 
-                if (u1 < e / (e + delta)):  # x in (0, 1)
+                if u1 < e / (e + delta):  # x in (0, 1)
                     g = pow(u2, 1.0 / delta)
-                    if (u3 < math.exp(-g)):
+                    if u3 < math.exp(-g):
                         gamma1 = g
                         break
                 else:  # x >= 1
                     g = 1.0 - math.log(u2)
-                    if (u3 < pow(g, delta - 1.0)):
+                    if u3 < pow(g, delta - 1.0):
                         gamma1 = g
                         break
 
                 it += 1
-                if (it == max_iter):
+                if it == max_iter:
                     raise RuntimeError("Gamma simulation algorithm did not converge")
                     return 0
 
@@ -147,16 +147,16 @@ def gamma(k, theta, size=1, max_iter=1000):
     for i in range(size):
         gamma1 = 0.0
 
-        if (delta > 0.0):
+        if delta > 0.0:
             it = 0
-            while (it <= max_iter):
+            while it <= max_iter:
                 u1 = safe_u()
                 u2 = safe_u()
                 u3 = safe_u()
 
-                if (u1 < e / (e + delta)):
+                if u1 < e / (e + delta):
                     g = pow(u2, 1.0 / delta)
-                    if (u3 < math.exp(-g)):
+                    if u3 < math.exp(-g):
                         gamma1 = g
                         break
                 else:
@@ -166,7 +166,7 @@ def gamma(k, theta, size=1, max_iter=1000):
                         break
 
                 it += 1
-                if (it == max_iter):
+                if it == max_iter:
                     raise RuntimeError("Gamma simulation algorithm did not converge")
 
         s = 0.0
