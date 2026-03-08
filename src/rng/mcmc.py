@@ -1,6 +1,4 @@
-from rng.rng_state import _Random
 from rng.continuous_distributions import gaussian, uniform
-import math
 
 def mcmc(pi, size=1_000, sigma=1, starting_point=1):
     """
@@ -24,8 +22,8 @@ def mcmc(pi, size=1_000, sigma=1, starting_point=1):
     for i in range(size):
         y = curr + gaussian(0, sigma ** 2, 1)
         alpha = pi(y) / pi(curr)
-        U = uniform()
-        if (U<alpha):
+        
+        if uniform() < alpha:
             res.append(y)
             curr = y 
             acceptance += 1
@@ -33,4 +31,3 @@ def mcmc(pi, size=1_000, sigma=1, starting_point=1):
             res.append(curr)
     acceptance_ratio = acceptance / size
     return [res, acceptance_ratio]
-        
