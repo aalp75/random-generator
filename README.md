@@ -1,6 +1,6 @@
 ## Random Generator
 
-Pseudo-random generator Python library with the core uniform generators implemented in C++.
+Pseudo-random generator Python library with the core uniform generators implemented in C++ (pybind11).
 
  - **Discrete distributions**: bernouilli, uniform, binomial, geometric, poisson.
  - **Continuous distributions**:, exponential, gaussian (scalar and vector), gamma, pareto, chi-square.
